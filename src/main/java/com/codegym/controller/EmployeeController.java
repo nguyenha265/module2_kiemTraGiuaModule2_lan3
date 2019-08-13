@@ -41,7 +41,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/employee")
-    public ModelAndView viewListEmployee(@PageableDefault(size = 2,sort = "salary",direction = Sort.Direction.DESC) Pageable pageable ) {
+    public ModelAndView viewListEmployee(@PageableDefault(size = 5/*,sort = "salary",direction = Sort.Direction.DESC*/) Pageable pageable ) {
         Page<Employee> employees = employeeService.findAll(pageable);
         ModelAndView modelAndView = new ModelAndView("/employee/list");
         modelAndView.addObject("employees", employees);
@@ -149,7 +149,7 @@ public class EmployeeController {
         return modelAndView;
     }
     @GetMapping("/gradualWageArrangement")
-    public ModelAndView gradualWageArrangement(@PageableDefault(size = 2) Pageable pageable){
+    public ModelAndView gradualWageArrangement(@PageableDefault(size = 5) Pageable pageable){
         Page<Employee> employees = employeeService.findByOrderBySalaryAsc(pageable);
         ModelAndView modelAndView = new ModelAndView("/employee/list");
         modelAndView.addObject("employees", employees);

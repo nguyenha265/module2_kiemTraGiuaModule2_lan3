@@ -12,7 +12,7 @@ public interface DepartmentService {
 
     void save(Department department);
 
-    void delete(Long id);
+    void delete(Long id ,Pageable pageable);
 
     Page<Department>findAllByNameStartsWith(String name, Pageable pageable);
 

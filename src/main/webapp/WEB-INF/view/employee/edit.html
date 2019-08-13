@@ -13,7 +13,7 @@
 <th:block th:if="${errorMessage}">
     <h3 th:text="${errorMessage}"></h3>
 </th:block>
-<form th:action="@{/edit-employee}" th:object="${employee}" method="post">
+<form th:action="@{/edit-employee}" th:object="${employee}" method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <th><input type="hidden" th:field="*{id}"></th>
@@ -25,6 +25,9 @@
             <th><input type="text" th:field="*{address}"></th>
             <th>Update Salary</th>
             <th><input type="text" th:field="*{salary}"></th>
+            <td><select th:field="*{department}">
+                <option th:each="p:${departments}" th:value="${p.id}" th:text="${p.name}"></option>
+            </select></td>
             <th>Update Avatar</th>
             <th><img width="100px" height="100px" th:src="@{'/image/' + ${employee.avatar}}"></th><br>
             <th><input type="file" th:field="*{avatar}"/></th>

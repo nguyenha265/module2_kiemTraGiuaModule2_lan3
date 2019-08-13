@@ -84,7 +84,7 @@ public class DepartmentController {
 
     @PostMapping("/delete-department")
     public ModelAndView deleteDepartment(@ModelAttribute Department department, Pageable pageable) {
-        departmentService.delete(department.getId());
+        departmentService.delete(department.getId(),pageable);
         Page<Department> departments = departmentService.findAll(pageable);
         ModelAndView modelAndView = new ModelAndView("/department/list");
         modelAndView.addObject("departments", departments);
