@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3><a th:href="@{/employee}">Back to Employee</a></h3>
+
+<th:block th:if="${errorMessage}">
+    <h3 th:text="${errorMessage}"></h3>
+</th:block>
+<form onsubmit="return confirm('ban co chac muon xoa')" th:action="@{/delete-employee}" th:object="${employee}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <input type="text" th:field="*{name}" disabled>
+    <input type="date" th:value="${employee.birthDate}" th:field="*{birthDate}" disabled>
+    <input type="text" th:field="*{address}" disabled>
+    <input type="number" th:field="*{salary}" step="any" disabled>
+    <input type="hidden" th:field="*{avatar}">
+    <img width="100px" height="100px" th:src="@{'/image/' + ${employee.avatar}}">
+    <input type="submit" value="Delete">
+</form>
+</body>
+
+
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3><a th:href="@{/department}">Back to Employee</a></h3>
+
+<form onsubmit="return confirm('ban co chac muon xoa')" th:action="@{/delete-department}" th:object="${department}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <input type="text" th:field="*{name}">
+    <p type="text" th:field="*{name}"></p>
+    <input type="submit" value="Delete">
+</form>
+</body>
+</html>

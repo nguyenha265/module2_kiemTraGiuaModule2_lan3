@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3><a th:href="@{/employee}">Back to Employee</a></h3>
+<h1>Update New Employee</h1>
+<th:block th:if="${message}">
+    <h3 th:text="${message}"></h3>
+</th:block>
+<th:block th:if="${errorMessage}">
+    <h3 th:text="${errorMessage}"></h3>
+</th:block>
+<form th:action="@{/edit-employee}" th:object="${employee}" method="post">
+    <table>
+        <tr>
+            <th><input type="hidden" th:field="*{id}"></th>
+            <th>Update Name</th>
+            <th><input type="text" th:field="*{name}"></th>
+            <th>Update BirthDate</th>
+            <th><input type="date" th:value="${employee.birthDate}" th:field="*{birthDate}"></th>
+            <th>Update Address</th>
+            <th><input type="text" th:field="*{address}"></th>
+            <th>Update Salary</th>
+            <th><input type="text" th:field="*{salary}"></th>
+            <th>Update Avatar</th>
+            <th><img width="100px" height="100px" th:src="@{'/image/' + ${employee.avatar}}"></th><br>
+            <th><input type="file" th:field="*{avatar}"/></th>
+            <th><input type="submit" value="Save"/></th>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

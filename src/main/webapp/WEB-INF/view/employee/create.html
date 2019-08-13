@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3><a th:href="@{/employee}">Back to Employee</a></h3>
+<h1>Create New Employee</h1>
+<th:block th:if="${message}">
+    <h3 th:text="${message}"></h3>
+</th:block>
+<th:block th:if="${errorMessage}">
+    <h3 th:text="${errorMessage}"></h3>
+</th:block>
+<form th:action="@{/save-employee}" th:object="${employee}" method="post" enctype="multipart/form-data">
+    <table border="1">
+        <tr>
+            <th>New Name</th>
+            <th><input type="text" th:field="*{name}"></th>
+        </tr>
+        <tr>
+            <th>New BirthDay</th>
+            <th><input type="date" th:field="*{birthDate}"></th>
+        </tr>
+
+        <tr>
+            <th>New Address</th>
+            <th><input type="text" th:field="*{address}"></th>
+        </tr>
+
+        <tr>
+            <th>New Salary</th>
+            <th><input type="text" th:field="*{salary}"></th>
+        </tr>
+        <tr>
+            <th>New Department</th>
+            <td><select th:field="*{department}">
+                <option th:each="p:${departments}" th:value="${p.id}" th:text="${p.name}"></option>
+            </select></td>
+        </tr>
+
+        <tr>
+            <th>New Avatar</th>
+            <th><input type="file" th:field="*{avatar}"/></th>
+        </tr>
+
+        <tr>
+            <th></th>
+            <th><input type="submit" value="Save"></th>
+        </tr>
+    </table>
+</form>
+
+
+</body>
+</html>
